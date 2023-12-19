@@ -16,8 +16,8 @@ jobs:
 
       - name: Get version from file
         run: |
-          VERSION_FILE="$/agentx/_version.py"
-          AGENTX_VERSION="$(cat agentx/_version.py | grep '__version__ = ' |  cut -d'=' -f2 | sed 's,\",,g' | sed "s,\',,g" | sed 's, ,,g')"
+          VERSION_FILE="$/helx_agents/_version.py"
+          AGENTX_VERSION="$(cat helx_agents/_version.py | grep '__version__ = ' |  cut -d'=' -f2 | sed 's,\",,g' | sed "s,\',,g" | sed 's, ,,g')"
           echo "Current version is:"
           echo "$AGENTX_VERSION"
 
@@ -37,7 +37,7 @@ jobs:
         with:
           tag: ${{ env.AGENTX_VERSION }}
           token: ${{ secrets.TRIAGE_KEY }}
-          name: "AGENTX release v${{ env.AGENTX_VERSION }}"
+          name: "HELX-agents release v${{ env.AGENTX_VERSION }}"
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
       - uses: actions/setup-python@v4
