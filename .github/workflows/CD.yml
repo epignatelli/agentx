@@ -36,6 +36,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ env.AGENTX_VERSION }}
+          token: ${{ secrets.TRIAGE_KEY }}
           name: "AGENTX release v${{ env.AGENTX_VERSION }}"
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
