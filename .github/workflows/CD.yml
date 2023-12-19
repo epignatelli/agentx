@@ -16,12 +16,12 @@ jobs:
 
       - name: Get version from file
         run: |
-          VERSION_FILE="$/helx/_version.py"
-          HELX_VERSION="$(cat helx/_version.py | grep '__version__ = ' |  cut -d'=' -f2 | sed 's,\",,g' | sed "s,\',,g" | sed 's, ,,g')"
+          VERSION_FILE="$/agentx/_version.py"
+          AGENTX_VERSION="$(cat agentx/_version.py | grep '__version__ = ' |  cut -d'=' -f2 | sed 's,\",,g' | sed "s,\',,g" | sed 's, ,,g')"
           echo "Current version is:"
-          echo "$HELX_VERSION"
+          echo "$AGENTX_VERSION"
 
-          echo "HELX_VERSION=$HELX_VERSION" >> $GITHUB_ENV
+          echo "AGENTX_VERSION=$AGENTX_VERSION" >> $GITHUB_ENV
 
       - name: Create changelog and push tag
         id: changelog
@@ -29,14 +29,14 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           output-file: false
-          fallback-version: ${{ env.HELX_VERSION }}
+          fallback-version: ${{ env.AGENTX_VERSION }}
           skip-commit: true
 
       - name: Create Release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ env.HELX_VERSION }}
-          name: "HELX release v${{ env.HELX_VERSION }}"
+          tag: ${{ env.AGENTX_VERSION }}
+          name: "AGENTX release v${{ env.AGENTX_VERSION }}"
           body: ${{ steps.changelog.outputs.clean_changelog }}
 
       - uses: actions/setup-python@v4
