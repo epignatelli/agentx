@@ -12,12 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-from .bsuite import BsuiteWrapper
-from .dm_env import DmEnvWrapper
-from .gym import GymWrapper
-from .gymnasium import GymnasiumWrapper
-from .gymnax import GymnaxWrapper
-from .brax import BraxWrapper
-# from .navix import NavixWrapper
-from .interop import to_helx
+# Make sure that the gym registry is populated
+# with exteral environments.
+from . import (
+    agents,
+    memory,
+    modules,
+    preprocess,
+    losses
+)
