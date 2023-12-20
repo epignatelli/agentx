@@ -33,6 +33,7 @@ def dqn_loss(
     td_error = rlax.q_learning(
         q_tm1, a_tm1, r_t, discount_t, q_t, stop_target_gradients=True
     )
+    td_error = jnp.asarray(td_error)
     td_loss = jnp.mean(0.5 * td_error**2)
     return td_loss
 
