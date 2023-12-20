@@ -22,8 +22,7 @@ import jax
 from jax.random import KeyArray
 import jax.numpy as jnp
 
-from .spaces import Space
-from .mdp import Timestep, TRANSITION
+from helx_base.mdp import Timestep
 
 
 class ReplayBuffer(struct.PyTreeNode):

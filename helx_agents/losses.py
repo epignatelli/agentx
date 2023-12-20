@@ -6,7 +6,7 @@ import jax.numpy as jnp
 import optax
 import rlax
 
-from .mdp import TERMINATION, Timestep
+from helx_base.mdp import TERMINATION, Timestep
 
 
 def flatten_timesteps(timesteps: Timestep, discount: float = 1.0) -> Tuple[Array, Array, Array, Array, Array, Array]:
